@@ -1,11 +1,7 @@
 <!-- CounterApp.vue -->
 <template>
   <div>
-    <!-- 現在のカウントを表示 -->
-    <p>Current Count: {{ currentCount }}</p>
-    <!-- インクリメントとデクリメントのボタン -->
-    <button @click="increment">+1</button>
-    <button @click="decrement">-1</button>
+
   </div>
 </template>
 
@@ -13,11 +9,9 @@
 export default {
   data() {
     return {
-      currentCount: 0 // 初期値は0
     };
   },
   methods: {
-    // TODO: インクリメントとデクリメントのメソッドを実装
   }
 };
 </script>
