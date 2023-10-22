@@ -1,19 +1,25 @@
+<!-- CounterApp.vue -->
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <!-- 現在のカウントを表示 -->
+    <p>Current Count: {{ currentCount }}</p>
+    <!-- インクリメントとデクリメントのボタン -->
+    <button @click="increment">+1</button>
+    <button @click="decrement">-1</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      currentCount: 0 // 初期値は0
+    };
+  },
+  methods: {
+    // TODO: インクリメントとデクリメントのメソッドを実装
   }
-}
+};
 </script>
 
 <style>
