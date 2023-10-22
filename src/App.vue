@@ -1,7 +1,17 @@
-<!-- CounterApp.vue -->
+<!-- ToDoListApp.vue -->
 <template>
   <div>
+    <!-- タスクの入力欄と追加ボタン -->
+    <input v-model="newTask" />
+    <button @click="addTask">追加</button>
 
+    <!-- タスクリスト -->
+    <ul>
+      <li v-for="task in tasks" :key="task.id">
+        {{ task.text }}
+        <button @click="removeTask(task.id)">削除</button>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -9,9 +19,17 @@
 export default {
   data() {
     return {
+      newTask: "", // 新しいタスクの入力値
+      tasks: [] // タスクリスト
     };
   },
   methods: {
+    addTask() {
+      // newTaskが空でなければタスクを追加
+    },
+    removeTask(id) {
+      // 指定されたIDのタスクを削除
+    }
   }
 };
 </script>
