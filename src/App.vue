@@ -2,7 +2,7 @@
 <template>
   <div>
     <!-- タスクの入力欄と追加ボタン -->
-    <input v-model="newTask" />
+    <input v-model="newTask" @keyup.enter="addTask"/>
     <button @click="addTask">追加</button>
 
     <!-- タスクリスト -->
@@ -26,9 +26,14 @@ export default {
   methods: {
     addTask() {
       // newTaskが空でなければタスクを追加
+      if (this.newTask.trim() !== "") {
+        this.task.push({ id: Date.now(), text: this.newTask});
+        this.newTask = "";
+      }
     },
     removeTask(id) {
       // 指定されたIDのタスクを削除
+      this.tasks = this.tasks.filter(task => task.id !== id);
     }
   }
 };
