@@ -27,7 +27,7 @@ export default {
     addTask() {
       // newTaskが空でなければタスクを追加
       if (this.newTask.trim() !== "") {
-        this.task.push({ id: Date.now(), text: this.newTask});
+        this.tasks.push({ id: Date.now(), text: this.newTask});
         this.newTask = "";
       }
     },
