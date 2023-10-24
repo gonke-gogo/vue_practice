@@ -1,43 +1,37 @@
 <!-- ToDoListApp.vue -->
 <template>
   <div>
-    <!-- タスクの入力欄と追加ボタン -->
-    <input v-model="newTask" @keyup.enter="addTask"/>
-    <button @click="addTask">追加</button>
-
-    <!-- タスクリスト -->
-    <ul>
-      <li v-for="task in tasks" :key="task.id">
-        {{ task.text }}
-        <button @click="removeTask(task.id)">削除</button>
-      </li>
-    </ul>
+    <h1>ToDoリスト</h1>
+    <task-list :tasks="tasks" @updateTask="updateTask"></task-list>
   </div>
 </template>
 
 <script>
+import TaskList from "./components/TaskList.vue";
+
 export default {
+  components: {
+    TaskList
+  },
   data() {
     return {
-      newTask: "", // 新しいタスクの入力値
-      tasks: [] // タスクリスト
+      tasks: [
+        { id: 1, text: "牛乳を買う", category: "家事" },
+        { id: 2, text: "報告書を書く", category: "仕事" }
+      ]
     };
   },
   methods: {
-    addTask() {
-      // newTaskが空でなければタスクを追加
-      if (this.newTask.trim() !== "") {
-        this.tasks.push({ id: Date.now(), text: this.newTask});
-        this.newTask = "";
+    updateTask(updatedTask) {
+      const taskIndex = this.tasks.findIndex(task => task.id === updatedTask.id);
+      if (taskIndex !== -1) {
+        this.tasks.splice(taskIndex, 1, updatedTask);
       }
-    },
-    removeTask(id) {
-      // 指定されたIDのタスクを削除
-      this.tasks = this.tasks.filter(task => task.id !== id);
     }
   }
 };
 </script>
+
 
 <style>
 #app {
