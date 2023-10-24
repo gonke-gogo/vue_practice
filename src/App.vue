@@ -2,7 +2,7 @@
 <template>
   <div>
     <h1>ToDoリスト</h1>
-    <task-list :tasks="tasks" @updateTask="updateTask"></task-list>
+    <task-list :tasks="tasks" @updateTask="handleUpdateTask"></task-list>
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
     };
   },
   methods: {
-    updateTask(updatedTask) {
+    handleUpdateTask(updatedTask) {
       const taskIndex = this.tasks.findIndex(task => task.id === updatedTask.id);
       if (taskIndex !== -1) {
         this.tasks.splice(taskIndex, 1, updatedTask);
